@@ -1,12 +1,5 @@
-const capitalizeAndFilter = (array) => {
-  const newArray = [];
-  for (const each of array) {
-    const upper = each.toUpperCase();
-    if (upper[0] !== 'F') {
-      newArray.push(upper);
-    }
-  }
-  return newArray;
-};
+const toUpCase = (array) => array.map((each) => each.toUpperCase());
+
+const capitalizeAndFilter = (array) => toUpCase(array).filter((item) => item[0] !== 'F');
 
 module.exports = capitalizeAndFilter;
