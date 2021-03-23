@@ -8,13 +8,19 @@ const mungeIsFun = (quote) => {
   };
 };
 
+const getRandom = (array) => {
+  return array[Math.floor(Math.random() * array.length)];
+};
+
 const getQuote = async () => {
   const response = await fetch('http://futuramaapi.herokuapp.com/api/quotes');
   const body = await response.json();
   const oneQuote = body.map((quote) => {
-    return mungeIsFun(quote);
+    const mungedQuote = mungeIsFun(quote);
+    return mungedQuote;
   });
-  return oneQuote[0];
+  const randoQuote = getRandom(oneQuote);
+  return randoQuote;
 };
 
 module.exports = getQuote;
